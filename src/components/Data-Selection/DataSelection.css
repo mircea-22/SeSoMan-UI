@@ -1,0 +1,88 @@
+.info {
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+    max-width: 75%;
+}
+
+
+.info .transfer-btn{
+    position: relative;
+    top: 60px;
+    background-color: #5a04bd;
+}
+
+.info .transfer-btn:hover{
+    background-color: #5a04bd;
+}
+
+.info .data-wrapper{
+    position: relative;
+    top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.info .data-wrapper .section-2{
+    position: relative;
+    left: 10%;
+}
+
+.info .data-wrapper .divider{
+    position: relative;
+    top: 20px;
+}
+
+.info .data-wrapper .section-1 .basic-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: fit-content;
+    position: relative;
+    top: 15px;
+}
+
+.info .data-wrapper .section-2 .grades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: fit-content;
+    position: relative;
+    top: 15px;
+}
+
+.info .data-wrapper .section-1 .checkbox > .MuiTypography-root{
+    font-size: 13px;
+}
+
+.info .data-wrapper .section-2 .checkbox > .MuiTypography-root{
+    font-size: 13px;
+}
+
+
+
+@media screen and (max-width: 1070px) {
+    .data{
+        display: block;
+    }
+
+    .info .MuiFormControl-root{
+        width: 100%;
+    }
+
+    .info .transfer-btn{
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .info .data-wrapper{
+        display: block;
+    }
+
+    .info .data-wrapper .section-1{
+        position: relative;
+    }
+
+    .info .data-wrapper .section-2{
+        top: 15px;
+        left: 0;
+    }
+}

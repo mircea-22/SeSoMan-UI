@@ -1,0 +1,66 @@
+{
+    "SeSoMan":{
+      "SeSoManUUID":"550e8400-e29b-11d4-a716-4466554400002",
+      "ID":"did:example:123456789abcdefghi"
+    },
+    "consent_list":[
+      {"data_category":{
+          "categorie_name":"Stammdaten",
+          "struct_only": "no",
+          "stammdaten_fields": {
+            "sfield3":"First Name",
+            "sfield4": "Last Name",
+            "sfield5":"Zip",
+            "sfield6":"City",
+            "sfield7":"Street",
+            "sfield8":"Email",
+            "sfield9":"School Adrress",
+            "sfield12":"Date of birth"
+          },
+          "data_records": [
+            {"sfield1":"1298zbhioh23pi0i","sfield2":"stud 108423kh094","sfield3":"Max","sfield4":"MUSTERMANN","sfield5":"8010","sfield6":"Graz","sfield7":"Burggasse 10","ssfield8":"max.mustermann@mymail.com","field9":"sch2123435","sfield10":"German","sfield11":"Austria","sfield12":"14.03.1999","sfield13":""},
+            {"sfield1":"124390856amna","sfield2":"stud 1082099cj94","sfield3":"Mia","sfield4":"MAUS","sfield5":"10115","sfield6":"Berlin","sfield7":"Weitweg 33a","sfield8":"mmaus@example.de","sfield9":"sch99463435","sfield10":"German","sfield11":"Germany","sfield12":"07.11.2004","sfield13":""}
+          ],
+          "consent":"yes"
+        }
+      },
+      {"data_category":{
+          "category_name":"Grades",
+          "struct_only": "yes",
+          "grades_fields": {
+            "gfield1":"Mathematics",
+            "gfield2":"Physics",
+            "gfield3":"Art",
+            "gfield4": "Science",
+            "gfield5":"History",
+            "gfield6":"Social Studies",
+            "gfield7":"Music",
+            "gfield8":"Biology",
+            "gfield9":"Religion"
+          },
+          "data_records": [
+            {"gfield1":"1298zbhioh23pi0i","gfield2":"stud 108423kh094","gfield3":"sch123465","gfield4":"ws2024","gfield5":"Mathematics","gfield6":"2","gfield7":"Gut","field8":"xyz","gfield9":"No"
+            },
+            {"gfield1":"1298zbhioh23pi0i","gfield2":"stud 108423kh094","gfield3":"sch123465","gfield4":"ws2024","gfield5":"English","gfield6":"3","gfield7":"Befriedigend","field8":"xyz","gfield9":"No"
+            }
+          ],
+        "consent":"yes"
+        }
+      },
+      {"data_category":{
+          "group_name":"Certificates",
+          "struct_only": "yes",
+          "fields": {},
+          "data_records": {},
+          "consent":"no"
+        }
+      }
+    ],
+    "callback": {
+        "URL":"https://api.sokrates.at/get_data?.....",
+      "JWT":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "Calling_Service":"Karriereassistent",
+        "Target_Service":"Sokrates"
+    }
+      
+  }

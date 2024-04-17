@@ -1,0 +1,17 @@
+.app-title{
+  color: white;
+  position: relative;
+  left: 13.5%;
+}
+
+.App div .fa-handshake{
+  position: relative;
+  left: 12.5%;
+}
+
+.App .title-wrapper{
+  background-color: #5a04bd;
+  display: flex;
+  width: 100%;
+}
+
