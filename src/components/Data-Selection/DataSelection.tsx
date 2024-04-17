@@ -33,7 +33,7 @@ export const DataSelection = () =>{
     }
 
     const sendPost = async(jwt: string) =>{
-        return axios.post('https://sesoman-backend.onrender.com/resource/add',{
+        return axios.post('/resource/add',{
             "JWT": jwt
         },{
             headers:{
