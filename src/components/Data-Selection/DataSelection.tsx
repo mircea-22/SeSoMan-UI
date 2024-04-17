@@ -10,26 +10,47 @@ import { API_URL } from '../../config';
 
 
 export const DataSelection = () =>{
-    const [allowedData, setAllowedData] = useState<{}>({});
-  
-   
+    const [allowedBasic, setAllowedBasic] = useState<string[]>([]);
+    const [allowedGrades, setAllowedGrades] = useState<string[]>([]);
+    const [data, setData] = useState<any>();
+    
+    const getDataStructure =  async() =>{
+        try{
+          var obj = await axios.get('https://merlot.sokrates-r3.test.eduapp.at/api/consent_descriptor');
+          setData(obj.data);
+        }catch(e){
+          console.error(e);
+        }
+      };
+    
+
+    useEffect(() =>{
+        if(!data){
+            getDataStructure();
+        }
+        
+    })
+
     const getProperyFromResouces = (prop: string) =>{
-        var array : string[] = [];
-        resources.consent_list.map((entry) =>{
-            Object.entries(entry.data_category[prop as keyof typeof entry.data_category] || {}).forEach(([key,value]) =>{
-                var str = value as string;
-                array.push(str);
-            });
+        var array : [string, string][] = [];
+        data?.consent_list.map((entry: any) =>{
+            if(entry.data_category.categorie_name === prop){
+                Object.entries(entry.data_category.fields).forEach(([key,value]) =>{
+                    var key_str = key as string;
+                    var value_str = value as string;
+                    array.push([key_str, value_str]);
+                });
+            }
         });
         return array;
     }
     
     const getBasicData = () =>{
-        return getProperyFromResouces('stammdaten_fields');
+        return getProperyFromResouces('Stammdaten');
     }
 
     const getGrades = () =>{
-        return getProperyFromResouces('grades_fields');
+        return getProperyFromResouces('Grades');
     }
 
     const sendPost = async(jwt: string) =>{
@@ -42,6 +63,7 @@ export const DataSelection = () =>{
         });
     }
 
+    
     const signJSON = async() =>{
         console.log(API_URL);
         const secret = new TextEncoder().encode(API_URL);
@@ -52,7 +74,8 @@ export const DataSelection = () =>{
                 "URL":"https://api.sokrates.at/get_data?....."
             },
             "Data_Selection":{
-                allowedData
+                "Stammdaten": allowedBasic,
+                "Grades": allowedGrades
             }
         })
         .setProtectedHeader({ alg })
@@ -66,7 +89,7 @@ export const DataSelection = () =>{
     }
 
   
-    return(
+    return data === undefined ? (<div />) :(
         <div className='info'>
             <Typography fontSize={20}>
                 Please select which data you allow to transfer:
@@ -79,7 +102,7 @@ export const DataSelection = () =>{
                     <div className='basic-data'>{
                         getBasicData().map((entry) =>
                             <FormGroup className="checkbox" >
-                                <FormControlLabel className='checkbox'  control={<Checkbox value={entry} size="small" onChange={(event) =>{setAllowedData({...allowedData, [entry]: event.target.checked})}}/>} label={entry}  />
+                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{setAllowedBasic([...allowedBasic, entry[0]])}}/>} label={entry[1]}  />
                             </FormGroup>
                         )}
                     </div>
@@ -92,7 +115,7 @@ export const DataSelection = () =>{
                     <div className='grades'>
                         {getGrades().map((entry) =>
                             <FormGroup className="checkbox">
-                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onClick={() =>{console.log(entry)}}/>} label={entry}/>
+                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{setAllowedGrades([...allowedGrades, entry[0]])}}/>} label={entry[1]}/>
                             </FormGroup>
                         )}
                     </div>
