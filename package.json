@@ -1,5 +1,4 @@
 {
-  "proxy": "https://sesoman-backend.onrender.com",
   "homepage": "https://sesoman.github.io/SeSoMan-UI",
   "name": "sesoman-ui",
   "version": "0.1.0",
