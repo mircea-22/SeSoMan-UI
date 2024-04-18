@@ -1,15 +1,19 @@
 import {  Button, Checkbox,  Divider,  FormControlLabel, FormGroup,Typography } from "@mui/material";
 import React, {useEffect, useState } from "react";
 import "./DataSelection.css";
-import resources from "./../../Resources.json";
 import axios from "axios";
 import * as jose from 'jose';
 import { API_URL } from '../../config';
+import { IRoutes } from "../../App";
+import bitmedia from '../assets/bitmedia.jpg';
+import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 
 
 
 
-export const DataSelection = () =>{
+export const DataSelection = (props: IRoutes) =>{
     const [allowedBasic, setAllowedBasic] = useState<string[]>([]);
     const [allowedGrades, setAllowedGrades] = useState<string[]>([]);
     const [data, setData] = useState<any>();
@@ -25,6 +29,7 @@ export const DataSelection = () =>{
     
 
     useEffect(() =>{
+        props.setIndex(2);
         if(!data){
             getDataStructure();
         }
@@ -65,13 +70,12 @@ export const DataSelection = () =>{
 
     
     const signJSON = async() =>{
-        console.log(API_URL);
         const secret = new TextEncoder().encode(API_URL);
         const alg = 'HS256';
         const jwt = await new jose.SignJWT({
             "Sokrates_Credentials": {
-                'JWT': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-                "URL":"https://api.sokrates.at/get_data?....."
+                'JWT': data.callback.Bearer,
+                "URL": data.callback.URL
             },
             "Data_Selection":{
                 "Stammdaten": allowedBasic,
@@ -79,20 +83,29 @@ export const DataSelection = () =>{
             }
         })
         .setProtectedHeader({ alg })
-        .setIssuedAt()
         .setIssuer('https://sesoman-backend.onrender.com')
         .setAudience('Signed JSON for SK')
-        .setExpirationTime('2h')
         .sign(secret);
 
         await sendPost(jwt);
+        window.open(`https://karriereassistent.schuelerkarriere.de/auth/callback?token=${jwt}`, "_self")
     }
 
   
-    return data === undefined ? (<div />) :(
+    return(
         <div className='info'>
-            <Typography fontSize={20}>
-                Please select which data you allow to transfer:
+            <Typography>
+                We found a match!
+            </Typography>
+            <Typography>
+                <div className='img-container'>
+                    <img className='img_logo' src={bitmedia}/>
+                    <FontAwesomeIcon className="arrow-right" icon={faArrowRight} size='5x'/>
+                    <img className='img_logo' src={karriereassistant}/>
+                </div>
+            </Typography>
+            <Typography fontSize={16}>
+                Bitmedia can share the following data with Schuelerkarriere
             </Typography>
             <div className='data-wrapper'>
                 <div className='section-1'>

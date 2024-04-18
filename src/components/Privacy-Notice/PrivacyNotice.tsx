@@ -1,13 +1,21 @@
 import { Accordion, AccordionDetails, AccordionSummary, Avatar, Button,Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import "./PrivacyNotice.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronDown, faClipboardList, faClipboardQuestion, faClock, faFileInvoice, faIdCard, faSitemap, faUserCheck } from "@fortawesome/pro-light-svg-icons";
 import { faUserGroup } from "@fortawesome/pro-regular-svg-icons";
 import { useHistory } from 'react-router-dom';
+import { IRoutes } from "../../App";
 
 
-export const PrivacyNotice = () => {
+
+export const PrivacyNotice = (props: IRoutes) => {
+    
+    useEffect(() =>{
+        props.setIndex(1)
+    },[]);
+
+
     const itemSpec = [
         'Explaining the legal basis we rely on',
         'What information do we collect from you?',

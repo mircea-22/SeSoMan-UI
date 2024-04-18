@@ -3,6 +3,8 @@
     padding-top: 15px;
     border-radius: 3px;
     width: 75%;
+    position: relative;
+    top: 35px;
 }
 
 .privacy-struct .info-msg{

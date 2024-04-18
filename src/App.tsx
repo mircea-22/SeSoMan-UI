@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import './App.css';
 import { PrivacyNotice } from './components/Privacy-Notice/PrivacyNotice';
 import { HashRouter, Route, Switch} from  'react-router-dom';
@@ -7,21 +7,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandshake } from '@fortawesome/pro-light-svg-icons';
 import { LoginPage } from './components/Login-Page/LoginPage';
 import { Dashboard } from './components/Dashboard/Dashboard';
+import { useState } from 'react';
 
-const Routes = () => {
+interface IStepper{
+  index: number;
+}
+
+export interface IRoutes{
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Routes = (props: IRoutes) => {
 
 
   return(
     <HashRouter>
         <Switch>
           <Route path='/privacy-notice'>
-            <PrivacyNotice/>
+            <PrivacyNotice setIndex={props.setIndex}/>
           </Route>
           <Route path='/data-selection'>
-            <DataSelection/>
+            <DataSelection setIndex={props.setIndex}/>
           </Route>
           <Route path='/login/:service'>
-            <LoginPage/>
+            <LoginPage setIndex={props.setIndex}/>
           </Route>
           <Route path='/dashboard'>
             <Dashboard/>
@@ -42,19 +51,32 @@ const Title = () =>{
   )
 }
 
+const StepperH = (position: IStepper) =>{
+  const steps = [
+    'Login Permission',
+    'Privacy Notice ',
+    'Data Selection',
+  ];
+
+  return (
+      <Stepper activeStep={position.index} alternativeLabel>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+  );
+}
+
 export function App(){
-
-  
-
- 
-
-  // Listen for route changes and update background accordingly
- 
+  const[position, setPosition] = useState<number>(0);
 
   return (
     <div className="App">
       <Title/>
-      <Routes/>
+      <StepperH index={position}/>
+      <Routes setIndex={setPosition}/>
     </div>
   );
 }

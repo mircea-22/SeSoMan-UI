@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import bitmedia from '../assets/bitmedia.jpg';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
 import { useHistory } from 'react-router-dom';
+import { IRoutes } from "../../App";
 
-export const LoginPage = () =>{
+
+export const LoginPage = (props: IRoutes) =>{
     const url: {service: string} = useParams();
     const [img, setImg] = useState<string>();
     const [text, setText] = useState<any>();
@@ -17,6 +19,7 @@ export const LoginPage = () =>{
     };
 
     useEffect(()=>{
+        props.setIndex(0);
         if(url.service === 'bitmedia_mit'){
             setImg(bitmedia);
             setText('Do you want to continue?');
@@ -24,23 +27,26 @@ export const LoginPage = () =>{
             setImg(karriereassistant);
             setText(karriereStatement());
         }
-    })
+    },[])
 
     const karriereStatement = () =>{
         return(
             <div>
-                <p>
+                <Typography fontSize={16}>
                 Schülerkarriere doesn’t know you yet!
-                </p>
-                <p>
+                </Typography>
+                <p></p>
+                <Typography fontSize={16}>
                 If you authorize logging in with your SeSoMan account, Schülerkarriere can recognize you next time you login.
-                </p>
-                <p>
+                </Typography>
+                <p></p>
+                <Typography fontSize={16}>
                 Schülerkarriere can also contact you if some functions of the service you use require your consent.
-                </p>
-                <p>
+                </Typography>
+                <p></p>
+                <Typography fontSize={16}>
                 Do you agree to proceed with SeSoMan login?
-                </p>
+                </Typography>
             </div>
         )
     }
@@ -55,9 +61,9 @@ export const LoginPage = () =>{
 
                     <img className='service_logo' src={img}/>
 
-                    <Typography className="q-mark" fontSize={16}>
+                    <div className="q-mark">
                         {text}
-                    </Typography>
+                    </div>
                 <div className='btn-container'>
                     <Button onClick={handleClick} className="yes-btn" size="small" variant="contained">Yes</Button>
                     <Button className="no-btn" size="small" variant="outlined">No</Button>
