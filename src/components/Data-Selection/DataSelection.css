@@ -18,19 +18,14 @@
 
 .info .data-wrapper{
     position: relative;
-    top: 15px;
+    top: 50px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .info .data-wrapper .section-2{
     position: relative;
     left: 10%;
-}
-
-.info .data-wrapper .divider{
-    position: relative;
-    top: 20px;
 }
 
 .info .data-wrapper .section-1 .basic-data {
@@ -50,15 +45,15 @@
 }
 
 .info .data-wrapper .section-1 .checkbox > .MuiTypography-root{
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .info .data-wrapper .section-2 .checkbox > .MuiTypography-root{
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .info .img_logo{
-    width: 250px;
+    width: 28%;
     border: 1px solid;
     border-radius: 10px;
 }
@@ -67,6 +62,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    top: 20px;
+}
+
+.info .title-match{
+    font-size: 16px;
+    position: relative;
+    top: 15px;
+}
+
+.info .share-hint{
+    position: relative;
+    top: 25px;
+}
+
+.info .img-container .arrow-right{
+    
 
 }
 
@@ -97,4 +109,20 @@
         top: 15px;
         left: 0;
     }
+
+    .info .img-container .arrow-right{
+        font-size: 80px;
+    }
+
+    .info .transfer-btn{
+        position: relative;
+        top: 120px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .info .img-container .arrow-right{
+        font-size: 50px;
+    }
+
 }

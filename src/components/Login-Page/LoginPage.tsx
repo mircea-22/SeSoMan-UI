@@ -15,7 +15,12 @@ export const LoginPage = (props: IRoutes) =>{
     const history = useHistory();
 
     const handleClick = () => {
-        history.push('/privacy-notice');
+        if(url.service === 'bitmedia_mit'){
+            window.open('https://merlot.sokrates-r3.test.eduapp.at/sesoman', '_self');
+        }else if (url.service === 'karriereassistant'){
+            history.push('/privacy-notice');
+        }
+        
     };
 
     useEffect(()=>{
@@ -23,6 +28,9 @@ export const LoginPage = (props: IRoutes) =>{
         if(url.service === 'bitmedia_mit'){
             setImg(bitmedia);
             setText('Do you want to continue?');
+            if(props.setShow){
+                props.setShow(false);
+            }
         }else if(url.service === 'karriereassistant'){
             setImg(karriereassistant);
             setText(karriereStatement());

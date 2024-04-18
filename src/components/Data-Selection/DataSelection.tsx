@@ -8,7 +8,8 @@ import { IRoutes } from "../../App";
 import bitmedia from '../assets/bitmedia.jpg';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
+import { faArrowRight, faFileExport, faLongArrowAltRight, faShare, faShareAltSquare, faSquareCaretRight } from "@fortawesome/pro-light-svg-icons";
+import { faRightLong, faSquareCaretLeft } from "@fortawesome/pro-regular-svg-icons";
 
 
 
@@ -94,18 +95,18 @@ export const DataSelection = (props: IRoutes) =>{
   
     return(
         <div className='info'>
-            <Typography>
+            <Typography className="title-match">
                 We found a match!
             </Typography>
             <Typography>
                 <div className='img-container'>
                     <img className='img_logo' src={bitmedia}/>
-                    <FontAwesomeIcon className="arrow-right" icon={faArrowRight} size='5x'/>
+                    <FontAwesomeIcon color="#5a04bd" className="arrow-right" size={'7x'} icon={faArrowRight}/>
                     <img className='img_logo' src={karriereassistant}/>
                 </div>
             </Typography>
-            <Typography fontSize={16}>
-                Bitmedia can share the following data with Schuelerkarriere
+            <Typography className='share-hint' fontSize={16}>
+                Bitmedia can share the following data with Schuelerkarriere:
             </Typography>
             <div className='data-wrapper'>
                 <div className='section-1'>
@@ -120,7 +121,6 @@ export const DataSelection = (props: IRoutes) =>{
                         )}
                     </div>
                 </div>
-                <Divider className="divider" orientation="vertical" flexItem/>
                 <div className='section-2'>
                     <Typography>
                         Grades

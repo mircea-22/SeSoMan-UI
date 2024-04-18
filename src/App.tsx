@@ -15,6 +15,7 @@ interface IStepper{
 
 export interface IRoutes{
   setIndex: React.Dispatch<React.SetStateAction<number>>;
+  setShow?:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Routes = (props: IRoutes) => {
@@ -30,7 +31,10 @@ const Routes = (props: IRoutes) => {
             <DataSelection setIndex={props.setIndex}/>
           </Route>
           <Route path='/login/:service'>
-            <LoginPage setIndex={props.setIndex}/>
+            <LoginPage 
+              setIndex={props.setIndex}
+              setShow={props.setShow}
+            />
           </Route>
           <Route path='/dashboard'>
             <Dashboard/>
@@ -59,9 +63,9 @@ const StepperH = (position: IStepper) =>{
   ];
 
   return (
-      <Stepper activeStep={position.index} alternativeLabel>
+      <Stepper  activeStep={position.index} alternativeLabel>
         {steps.map((label) => (
-          <Step key={label}>
+          <Step  key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
@@ -71,12 +75,19 @@ const StepperH = (position: IStepper) =>{
 
 export function App(){
   const[position, setPosition] = useState<number>(0);
+  const[show, setShow] = useState<boolean>(true);
 
   return (
     <div className="App">
       <Title/>
-      <StepperH index={position}/>
-      <Routes setIndex={setPosition}/>
+      {
+        show && <StepperH index={position}/>
+      }
+      
+      <Routes 
+        setIndex={setPosition}
+        setShow={setShow}
+      />
     </div>
   );
 }

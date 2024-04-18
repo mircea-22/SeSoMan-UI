@@ -7,6 +7,10 @@
     top: 35px;
 }
 
+.App .privacy-struct .html-description{
+    font-size: 15px;
+}
+
 .privacy-struct .info-msg{
     margin-top: 10px;
 }

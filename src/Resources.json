@@ -1,66 +1,10 @@
 {
-    "SeSoMan":{
-      "SeSoManUUID":"550e8400-e29b-11d4-a716-4466554400002",
-      "ID":"did:example:123456789abcdefghi"
-    },
-    "consent_list":[
-      {"data_category":{
-          "categorie_name":"Stammdaten",
-          "struct_only": "no",
-          "stammdaten_fields": {
-            "sfield3":"First Name",
-            "sfield4": "Last Name",
-            "sfield5":"Zip",
-            "sfield6":"City",
-            "sfield7":"Street",
-            "sfield8":"Email",
-            "sfield9":"School Adrress",
-            "sfield12":"Date of birth"
-          },
-          "data_records": [
-            {"sfield1":"1298zbhioh23pi0i","sfield2":"stud 108423kh094","sfield3":"Max","sfield4":"MUSTERMANN","sfield5":"8010","sfield6":"Graz","sfield7":"Burggasse 10","ssfield8":"max.mustermann@mymail.com","field9":"sch2123435","sfield10":"German","sfield11":"Austria","sfield12":"14.03.1999","sfield13":""},
-            {"sfield1":"124390856amna","sfield2":"stud 1082099cj94","sfield3":"Mia","sfield4":"MAUS","sfield5":"10115","sfield6":"Berlin","sfield7":"Weitweg 33a","sfield8":"mmaus@example.de","sfield9":"sch99463435","sfield10":"German","sfield11":"Germany","sfield12":"07.11.2004","sfield13":""}
-          ],
-          "consent":"yes"
-        }
-      },
-      {"data_category":{
-          "category_name":"Grades",
-          "struct_only": "yes",
-          "grades_fields": {
-            "gfield1":"Mathematics",
-            "gfield2":"Physics",
-            "gfield3":"Art",
-            "gfield4": "Science",
-            "gfield5":"History",
-            "gfield6":"Social Studies",
-            "gfield7":"Music",
-            "gfield8":"Biology",
-            "gfield9":"Religion"
-          },
-          "data_records": [
-            {"gfield1":"1298zbhioh23pi0i","gfield2":"stud 108423kh094","gfield3":"sch123465","gfield4":"ws2024","gfield5":"Mathematics","gfield6":"2","gfield7":"Gut","field8":"xyz","gfield9":"No"
-            },
-            {"gfield1":"1298zbhioh23pi0i","gfield2":"stud 108423kh094","gfield3":"sch123465","gfield4":"ws2024","gfield5":"English","gfield6":"3","gfield7":"Befriedigend","field8":"xyz","gfield9":"No"
-            }
-          ],
-        "consent":"yes"
-        }
-      },
-      {"data_category":{
-          "group_name":"Certificates",
-          "struct_only": "yes",
-          "fields": {},
-          "data_records": {},
-          "consent":"no"
-        }
-      }
-    ],
-    "callback": {
-        "URL":"https://api.sokrates.at/get_data?.....",
-      "JWT":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-        "Calling_Service":"Karriereassistent",
-        "Target_Service":"Sokrates"
-    }
-      
-  }
+   "fields": ["<div>As required by Article 6 of the General Data Protection Regulation (GDPR), we are committed to providing transparency regarding the legal basis upon which we rely for processing personal data. Our primary legal bases for processing personal data include consent, contract fulfillment, legal obligations, vital interests, the performance of a task carried out in the public interest or in the exercise of official authority vested in the controller, and legitimate interests pursued by the data controller or a third party. </div> ",
+    "<div>In accordance with Article 6 of the General Data Protection Regulation (GDPR), we collect only the necessary information from you to fulfill the purposes for which it is collected. This may include personal data such as your name, email address, and contact details.</div><p></p><div>If you use your SeSoMan account to login to other services we may get access to further information about your educational or professional profile (e.g. learning records, work experience etc.)</div>",
+    "<div>At SeSoMan, we prioritize the protection of your personal data in accordance with the General Data Protection Regulation (GDPR). We collect information to ensure personalized and efficient service delivery, tailoring our offerings to meet your specific needs. This data enables us to enhance your experience, improve our products and services, and provide relevant updates.</div>",
+    "<div>Transparency is key, and we're committed to informing you about the purpose behind each piece of information we collect, ensuring your trust and confidence in our processes.</div><p></p><div>We use your personal information:</div><ul><li>to create your account in our service</li><li>to contact you and verify your identity</li><li>to provide you with unique credential information to login into our service</li><li>to share it with other organizations and services you have authorized us to do so</li><ul>",
+    "<div>Your personal information is protected against unauthorized access or disclosure. However, we might need to share some of your information with:</div><ul><li>Third parties, if you use your SeSoMan account to use their services and give us your consent to do so. </li><li>Companies we engage to provide services like hosting our website or payment processing. These companies might see or work with your information but can't use it for their own purposes.</li></ul><p></p><div>Sometimes, we might share your information with others if a court, government, or law tells us to. For example, we might give information to the police if they need it to investigate a crime, or we might use it in court if we need to protect our rights. If there's an emergency, we might need to share your information with the right people to help</div>",
+    "<div>Your data is retained only for as long as necessary to fulfill the contract for services with you. In some cases, a longer retention period is required or permitted by law to which we are subject.</div>",
+    "<div>On the Profile page of your SeSoMan account you can see your main personal information (e.g. name, birth date, address, phone number and email). On the Dashboad page of your SeSoMan account you can see all information you have shared with others, including:</div><ul><li>Name of the service/organization you have shared your information with.</li><li>Your consent records which include date and the scope of the data (types) you have shared.</li></ul><p></p><div>On your Profile page you can download your personal information. On the Dashboad page you are able to revoke your consent for sharing with specific services.</div>",
+    "<div>We ensure that your data is processed lawfully, fairly, and transparently, with your explicit consent or based on other legitimate grounds outlined in the GDPR. For any questions or claims regarding data protection you can contact a person indicated on your Profile page as a controller.</div>"]
+}

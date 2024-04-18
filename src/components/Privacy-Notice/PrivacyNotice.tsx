@@ -6,7 +6,7 @@ import { faCircleChevronDown, faClipboardList, faClipboardQuestion, faClock, faF
 import { faUserGroup } from "@fortawesome/pro-regular-svg-icons";
 import { useHistory } from 'react-router-dom';
 import { IRoutes } from "../../App";
-
+import resources from './../../Resources.json';
 
 
 export const PrivacyNotice = (props: IRoutes) => {
@@ -17,7 +17,7 @@ export const PrivacyNotice = (props: IRoutes) => {
 
 
     const itemSpec = [
-        'Explaining the legal basis we rely on',
+        'What is the legal basis for the data protection',
         'What information do we collect from you?',
         'Why do we collect this information?',
         'Who might we share your information with?',
@@ -66,8 +66,7 @@ export const PrivacyNotice = (props: IRoutes) => {
                         <Typography fontSize={15} className="acc-text" variant='body1'>{text}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
+                        <div className="html-description" dangerouslySetInnerHTML={{ __html: resources.fields[itemSpec.indexOf(text)]}} />
                     </AccordionDetails>
                 </Accordion>
                 )}
