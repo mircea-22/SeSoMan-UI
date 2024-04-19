@@ -20,11 +20,11 @@ export const PrivacyNotice = (props: IRoutes) => {
         'What is the legal basis for the data protection',
         'What information do we collect from you?',
         'Why do we collect this information?',
-        'Who might we share your information with?',
         'What do we do with your information?',
+        'Who might we share your information with?',
         'How long do we keep hold of your information?',
         'How can I access the information you hold about me?',
-        'Where your personal data may be processed?',
+        'How can I contact a person responsible for data protection at SeSoMan?',
 
     ];
 

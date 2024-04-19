@@ -16,7 +16,7 @@
 }
 
 .App .MuiStepper-root{
-  width: 100%;
+  width: 75%;
   position: relative;
   top: 20px;
   margin: 0 auto;

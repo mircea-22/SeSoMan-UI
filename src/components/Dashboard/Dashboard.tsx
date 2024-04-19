@@ -1,5 +1,5 @@
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from "@mui/lab";
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 import { CardT } from "./CardT";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,8 +8,11 @@ import { Paper, Typography } from "@mui/material";
 
 
 
-export const Dashboard = () =>{
+export const Dashboard = (props: any) =>{
 
+    useEffect(() =>{
+      props.setShow(false)
+    },[])
 
 
     return(

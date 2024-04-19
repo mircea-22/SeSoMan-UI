@@ -37,7 +37,7 @@ const Routes = (props: IRoutes) => {
             />
           </Route>
           <Route path='/dashboard'>
-            <Dashboard/>
+            <Dashboard  setShow={props.setShow}/>
           </Route>
         </Switch>
         </HashRouter>

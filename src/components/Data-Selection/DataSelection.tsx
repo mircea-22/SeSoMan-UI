@@ -1,4 +1,4 @@
-import {  Button, Checkbox,  Divider,  FormControlLabel, FormGroup,Typography } from "@mui/material";
+import {  Button, Checkbox,  CircularProgress,  Divider,  FormControlLabel, FormGroup,Typography } from "@mui/material";
 import React, {useEffect, useState } from "react";
 import "./DataSelection.css";
 import axios from "axios";
@@ -8,8 +8,7 @@ import { IRoutes } from "../../App";
 import bitmedia from '../assets/bitmedia.jpg';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faFileExport, faLongArrowAltRight, faShare, faShareAltSquare, faSquareCaretRight } from "@fortawesome/pro-light-svg-icons";
-import { faRightLong, faSquareCaretLeft } from "@fortawesome/pro-regular-svg-icons";
+import { faArrowRight} from "@fortawesome/pro-light-svg-icons";
 
 
 
@@ -93,7 +92,7 @@ export const DataSelection = (props: IRoutes) =>{
     }
 
   
-    return(
+    return data == undefined ? <CircularProgress /> :(
         <div className='info'>
             <Typography className="title-match">
                 We found a match!
