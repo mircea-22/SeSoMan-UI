@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./LoginPage.css"
 import { Button, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-import bitmedia from '../assets/bitmedia.jpg';
+import bitmedia from '../assets/sokrates.png';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
 import { useHistory } from 'react-router-dom';
 import { IRoutes } from "../../App";

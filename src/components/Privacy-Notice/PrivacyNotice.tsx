@@ -50,8 +50,8 @@ export const PrivacyNotice = (props: IRoutes) => {
             <Typography variant="h6">
                 Privacy Notice
             </Typography>
-            <Typography fontSize={16} className="info-msg">
-                Details of what information we collect from you, what we do with it and who it might be shared with.
+            <Typography fontSize={15} className="info-msg">
+            This Privacy Notice is aimed to give you important information about protection of your personal information. It also provides you with the relevant information about your rights in accordance with the General Data Protection Regulation (GDPR). Below we also inform you about which personal data we collect and for what purposes, how long we keep hold and whom we share your personal information with. Please read this Privacy Notice very carefully because it relates to your fundamental rights.
             </Typography>
             
             <div className="info-topics">

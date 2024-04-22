@@ -7,7 +7,7 @@
 
 .login-wrapper .hint-section .q-mark{
     position: relative;
-    top: 70px; 
+    top: 90px; 
 }
 
 .hint-section{
@@ -20,7 +20,7 @@
 
 .btn-container{
     position: relative;
-    top: 90px;
+    top: 105px;
 }
 .btn-container Button{
     margin-right: 10px;
@@ -49,8 +49,7 @@
     top: 40px;
     width: 25%;
     left: 30%;
-    border: 1px solid;
-    border-radius: 10px;
+    
 }
 
 @media screen and (max-width: 1070px) {

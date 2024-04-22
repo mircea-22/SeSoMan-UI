@@ -27,13 +27,44 @@
 
 .App .timeline-wrapper .card-wrapper{
     cursor: pointer;
-} 
+    
+}
 
+.App .timeline-wrapper .timeline-title{
+    text-indent: 2.5%;
+}
+
+.App .timeline-wrapper .card-wrapper img{
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+    max-height: 100%; /* Ensure the image does not exceed the container height */
+    object-fit: contain; 
+}
+
+.App .timeline-wrapper .MuiPaper-root{
+    width: 450px;
+    height: 150px;
+}
+
+.App .timeline-wrapper .dash-title{
+    position: relative;
+    top: 20px;
+}
+
+
+.App .MuiModal-root  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: fit-content;
+    position: relative;
+    top: 15px;
+    align-items: center;
+    background-color: red;
+}
 
 @media screen and (max-width: 1300px){
 
     .App .timeline-wrapper .MuiPaper-root{
-        width: 350px;
+        width: 380px;
         height: 150px;
     }
 

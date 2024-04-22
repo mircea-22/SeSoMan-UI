@@ -5,7 +5,7 @@ import axios from "axios";
 import * as jose from 'jose';
 import { API_URL } from '../../config';
 import { IRoutes } from "../../App";
-import bitmedia from '../assets/bitmedia.jpg';
+import bitmedia from '../assets/sokrates.png';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight} from "@fortawesome/pro-light-svg-icons";
@@ -20,7 +20,9 @@ export const DataSelection = (props: IRoutes) =>{
     
     const getDataStructure =  async() =>{
         try{
-          var obj = await axios.get('https://merlot.sokrates-r3.test.eduapp.at/api/consent_descriptor');
+          var obj = await axios.get('https://merlot.sokrates-r3.test.eduapp.at/api/consent_descriptor',   {headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }});
           setData(obj.data);
         }catch(e){
           console.error(e);
@@ -68,6 +70,42 @@ export const DataSelection = (props: IRoutes) =>{
         });
     }
 
+    const getDate = () =>{
+        const currentDate = new Date();
+        const monthOptions: Intl.DateTimeFormatOptions = { month: 'long' };
+        const month = currentDate.toLocaleString('en-US', monthOptions);
+
+        const dayOptions: Intl.DateTimeFormatOptions = { day: 'numeric' };
+        const day = currentDate.toLocaleString('en-US', dayOptions);
+
+        const year = currentDate.getFullYear();
+
+        // Get the weekday in letters
+        const weekdayOptions: Intl.DateTimeFormatOptions = { weekday: 'long' };
+        const weekday = currentDate.toLocaleString('en-US', weekdayOptions);
+
+        const hour = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+
+        return(`${month}, ${weekday} ${day}, ${year} ${hour}:${minutes}`);
+    }
+
+    const addEntryBasic = (entry: string) => {
+        // Check if the entry already exists in the state
+        if (!allowedBasic.includes(entry)) {
+          // If the entry does not exist, add it to the state
+          setAllowedBasic(prevState => [...prevState, entry]);
+        }
+      };
+
+      const addEntryGrades = (entry: string) => {
+        // Check if the entry already exists in the state
+        if (!allowedGrades.includes(entry)) {
+          // If the entry does not exist, add it to the state
+          setAllowedGrades(prevState => [...prevState, entry]);
+        }
+      };
+
     
     const signJSON = async() =>{
         const secret = new TextEncoder().encode(API_URL);
@@ -80,7 +118,10 @@ export const DataSelection = (props: IRoutes) =>{
             "Data_Selection":{
                 "Stammdaten": allowedBasic,
                 "Grades": allowedGrades
-            }
+            },
+            "Calling_Service": data.callback.Calling_Service,
+            "Target_Service": data.callback.Target_Service,
+            "Date": getDate(),
         })
         .setProtectedHeader({ alg })
         .setIssuer('https://sesoman-backend.onrender.com')
@@ -100,7 +141,7 @@ export const DataSelection = (props: IRoutes) =>{
             <Typography>
                 <div className='img-container'>
                     <img className='img_logo' src={bitmedia}/>
-                    <FontAwesomeIcon color="#5a04bd" className="arrow-right" size={'7x'} icon={faArrowRight}/>
+                    <FontAwesomeIcon color="#5a04bd" className="arrow-right" size={'4x'} icon={faArrowRight}/>
                     <img className='img_logo' src={karriereassistant}/>
                 </div>
             </Typography>
@@ -115,7 +156,7 @@ export const DataSelection = (props: IRoutes) =>{
                     <div className='basic-data'>{
                         getBasicData().map((entry) =>
                             <FormGroup className="checkbox" >
-                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{setAllowedBasic([...allowedBasic, entry[0]])}}/>} label={entry[1]}  />
+                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{addEntryBasic(entry[0])}}/>} label={entry[1]}  />
                             </FormGroup>
                         )}
                     </div>
@@ -127,7 +168,7 @@ export const DataSelection = (props: IRoutes) =>{
                     <div className='grades'>
                         {getGrades().map((entry) =>
                             <FormGroup className="checkbox">
-                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{setAllowedGrades([...allowedGrades, entry[0]])}}/>} label={entry[1]}/>
+                                <FormControlLabel className='checkbox'  control={<Checkbox size="small" onChange={() =>{addEntryGrades(entry[0])}}/>} label={entry[1]}/>
                             </FormGroup>
                         )}
                     </div>

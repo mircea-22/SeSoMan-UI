@@ -57,7 +57,7 @@ const Title = () =>{
 
 const StepperH = (position: IStepper) =>{
   const steps = [
-    'Login Permission',
+    'Login Confirmation',
     'Privacy Notice ',
     'Data Selection',
   ];
