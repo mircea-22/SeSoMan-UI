@@ -1,4 +1,4 @@
-import {  Button, Checkbox,  CircularProgress,  Divider,  FormControlLabel, FormGroup,Typography } from "@mui/material";
+import {  Box, Button, Checkbox,  CircularProgress,  Divider,  FormControlLabel, FormGroup,Modal,Typography } from "@mui/material";
 import React, {useEffect, useState } from "react";
 import "./DataSelection.css";
 import axios from "axios";
@@ -17,6 +17,19 @@ export const DataSelection = (props: IRoutes) =>{
     const [allowedBasic, setAllowedBasic] = useState<string[]>([]);
     const [allowedGrades, setAllowedGrades] = useState<string[]>([]);
     const [data, setData] = useState<any>();
+    const [open, setOpen] = useState<boolean>(false);
+
+    const style = {
+        position: 'absolute' as 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
     
     const getDataStructure =  async() =>{
         try{
@@ -174,9 +187,28 @@ export const DataSelection = (props: IRoutes) =>{
                     </div>
                 </div>
             </div>
-            <Button onClick={signJSON} size="small" variant="contained" className="transfer-btn">
+            <Button onClick={() =>{setOpen(true);}} size="small" variant="contained" className="transfer-btn">
                 Transfer data
             </Button>
+            <Modal
+                open={open}
+                onClose={() =>{setOpen(false)}}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Transfer Data notification
+                  </Typography>
+                  <Typography id="modal-modal-description" fontSize={15} sx={{ mt: 2 }}>
+                    Are you sure you want to transfer the selected data?  Once confirmed, you will be redirected to Schülerkarriere
+                  </Typography>
+                  <div style={{display: 'flex', justifyContent: 'flex-start', marginTop: '15px'}}>
+                    <Button size='small' variant="contained" onClick={() => {signJSON();}}>Confirm</Button>
+                    <Button sx={{marginLeft: '10px'}} size='small' variant="outlined" onClick={() => {setOpen(false);}}>Cancel</Button>
+                  </div>
+                </Box>
+            </Modal>
         </div> 
     );
 }

@@ -3,12 +3,21 @@ import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import { CardT } from "./CardT";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLongArrowAltRight } from "@fortawesome/pro-light-svg-icons";
-import { Box, Button, Divider, Modal, Paper, Typography } from "@mui/material";
+import { faDownload, faLongArrowAltRight } from "@fortawesome/pro-light-svg-icons";
+import { Box, Button, IconButton, Modal, Paper, Typography } from "@mui/material";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import bitmedia from '../assets/sokrates.png';
 import karriereassistant from '../assets/SchuelerkarriereLogo.jpg';
+import hpi from '../assets/HPI.jpg';
+import awsi from '../assets/AWSi.svg';
+import imc from '../assets/IMC.png';
+import headai from '../assets/Headai.png';
+import lightcast from '../assets/lightcast.png';
+import openteach from '../assets/OpenTeach.png';
+import resources from './../../Resources.json';
+import { useHistory } from "react-router-dom";
+
 
 
 export const Dashboard = (props: any) =>{
@@ -16,17 +25,72 @@ export const Dashboard = (props: any) =>{
     const [data, setData] = useState<any[]>([]);
     const [target, setTarget] = useState<string>('');
     const [consumer, setConsumer] = useState<string>('')
+    const [sok_data, setSokData] = useState<any>();
+    const history = useHistory();
+
+    useEffect(() =>{
+      if(!sok_data){
+          getDataStructure();
+      }
+      
+  })
+
   
    
     const getTokens = async() =>{
       try{
-        var obj = await axios.post('https://sesoman-backend.onrender.com/resource/view/all', {headers: {
+        var obj = await axios.post('https://sesoman-backend.onrender.com/resource/view', {headers: {
           'Content-Type': 'application/json; charset=utf-8'
         }});
         getDataFromTokens(obj.data)
       }catch(e){
         console.error(e);
       }
+    }
+
+    const getDataStructure =  async() =>{
+      try{
+        var obj = await axios.get('https://merlot.sokrates-r3.test.eduapp.at/api/consent_descriptor',   {headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }});
+        setSokData(obj.data);
+      }catch(e){
+        console.error(e);
+      }
+    };
+
+    const getProperyFromResouces = (prop: string) =>{
+      var array : [string, string][] = [];
+      sok_data?.consent_list.map((entry: any) =>{
+          if(entry.data_category.categorie_name === prop){
+              Object.entries(entry.data_category.fields).forEach(([key,value]) =>{
+                  var key_str = key as string;
+                  var value_str = value as string;
+                  array.push([key_str, value_str]);
+              });
+          }
+      });
+      return array;
+    }
+
+    const getBasicData = (val: string) =>{
+      var res: string = '';
+      getProperyFromResouces('Stammdaten').map((entry) =>{
+          if(entry[0] === val){
+            res =  entry[1];
+          }
+      });
+      return res;
+    }
+
+    const getGrades = (val: string) =>{
+      var res: string = '';
+      getProperyFromResouces('Grades').map((entry) =>{
+          if(entry[0] === val){
+            res = entry[1];
+          }
+      });
+      return res;
     }
 
     async function decodeToken(token: string) {
@@ -39,17 +103,44 @@ export const Dashboard = (props: any) =>{
       }
     }
 
+    const assignResources = (provider: string, consumer: string) =>{
+      var result: string[] = [];
+      if(provider === 'AWSi'  && consumer === 'HPI academy'){
+        result.push(awsi);
+        result.push(hpi);
+      }else if(provider === 'Headai' && consumer === 'IMC'){
+        result.push(headai);
+        result.push(imc);
+      }else if(provider === 'Lightcast' && consumer === 'Open Teach'){
+        result.push(lightcast);
+        result.push(openteach);
+      }
+      return result;
+    }
+
     const getDataFromTokens = async(tokens: any) =>{
       var new_data : any[] = [];
       var openStates: boolean[] = [];
       var iterator = 0;
-      while(iterator < tokens.length){
-          var obj = await decodeToken(tokens[iterator].jwt);
-          new_data.push(obj);
-          openStates.push(false);
-          iterator = iterator + 1;
-      }
+      
+      var obj: any = await decodeToken(tokens);
+      obj['ProviderImage'] = bitmedia;
+      obj['ConsumerImage'] = karriereassistant;
+      obj['ProviderDesc'] = 'School administration system';
+      obj['ConsumerDesc'] = 'Career recommendation system';
+
+      new_data.push(obj);
+      openStates.push(false);
+      iterator = iterator + 1;
+      
+      resources.extra_fields.map((field) =>{
+        var res = assignResources(field.Target_Service, field.Calling_Service);
+        field['ProviderImage'] = res[0];
+        field['ConsumerImage'] = res[1];
+        new_data.push(field);
+      })
       setData(new_data);
+      console.log(new_data);
       setOpen(openStates);
     }
 
@@ -114,8 +205,8 @@ export const Dashboard = (props: any) =>{
                     <div className='card-wrapper'>
                         <CardT
                             title={obj.Target_Service}
-                            subtitle='Learning Management System'
-                            image={bitmedia}
+                            subtitle={obj.ProviderDesc}
+                            image={obj.ProviderImage}
                         />
                         <Paper onClick={() =>{
                           setOpenAtIndex(data.indexOf(obj));
@@ -124,14 +215,14 @@ export const Dashboard = (props: any) =>{
                           
                           }} 
                           className="paper-container">
-                            <FontAwesomeIcon color="#D3D3D3" icon={faLongArrowAltRight} size='5x' />
+                            <FontAwesomeIcon className='arrow-right' color="#D3D3D3" icon={faLongArrowAltRight} size='5x' />
                             <Typography>Data Transfer</Typography>
                         </Paper>
                         
                         <CardT
                             title={obj.Calling_Service}
-                            subtitle='Learning Management System'
-                            image={karriereassistant}
+                            subtitle={obj.ConsumerDesc}
+                            image={obj.ConsumerImage}
                         />
                     </div>
                   </TimelineContent>
@@ -143,7 +234,10 @@ export const Dashboard = (props: any) =>{
                       aria-describedby="parent-modal-description"
                     >
                       <Box sx={{...style,  width: 400 }}>
-                        <h2 id="parent-modal-title">Consent Receipt</h2>
+                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                          <h2 id="parent-modal-title">Consent Receipt</h2>
+                          <IconButton><FontAwesomeIcon icon={faDownload}/></IconButton>
+                        </div>
                         <div>
                           <div style={{display: 'flex', alignItems: 'center'}}><Typography sx={{marginRight: '2px'}} fontSize={15}><b>Provider:</b></Typography><Typography fontSize={14}>{target}</Typography></div>
                           <div style={{display: 'flex', alignItems: 'center'}}><Typography sx={{marginRight: '2px'}} fontSize={15}><b>Consumer:</b></Typography><Typography fontSize={14}> {consumer}</Typography></div>
@@ -152,28 +246,31 @@ export const Dashboard = (props: any) =>{
                           <Typography sx={{position: 'relative', top: '20px'}} fontSize={14}><b>Status:</b> Allowed</Typography>
                           <div style={{position: 'relative', top: '35px'}}>
                             <Typography fontSize={14}><b>Basic Information</b></Typography>
-                            <ul style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+                            <ul style={{columns: '2', columnGap: '20px'}}>
                             {obj.Data_Selection.Stammdaten.map((entry: string) =>
                             <li key={entry}><Typography fontSize={13}>
-                            {capitalizeFirstLetter(entry)}
+                            {capitalizeFirstLetter(getBasicData(entry))}
                             </Typography></li>
                             )}
                             </ul>
                           </div>
                           <div style={{position: 'relative', top: '25px'}}>
                           {obj.Data_Selection.Grades && <Typography fontSize={14}><b>Grades</b></Typography>}
-                            <ul style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-                            {obj.Data_Selection.Grades.map((entry: string) =>
-                            <li key={entry}><Typography fontSize={13}>
-                            {capitalizeFirstLetter(entry)}
-                            </Typography></li>
-                            )}
+                            <ul style={{columns: '2', columnGap: '20px'}}>
+                              {obj.Data_Selection.Grades.map((entry: string) =>
+                                <li key={entry} style={{}}>
+                                  <Typography fontSize={13}>
+                                    {capitalizeFirstLetter(getGrades(entry))}
+                                  </Typography>
+                                </li>
+                                )}
                             </ul>
                           </div>
                         </div>
-                        <div style={{position: 'relative', bottom: '0', display: 'flex', justifyContent: 'flex-start', marginTop: '40px'}}>
+                        <div style={{position: 'relative', bottom: '0', display: 'flex', justifyContent: 'space-between', marginTop: '50px'}}>
                           <Button sx={{marginRight: '5px'}} size='small' variant="contained">Revoke consent</Button>
-                          <Button size='small' variant="contained">Download</Button>
+                          <Button onClick={() =>{history.push('/privacy-notice')}} sx={{marginRight: '5px'}} size='small' variant="contained">Privacy Notice</Button>
+                          
                         </div>
                       </Box>
                     </Modal>
