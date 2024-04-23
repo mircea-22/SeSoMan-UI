@@ -204,8 +204,8 @@ export const DataSelection = (props: IRoutes) =>{
                     Are you sure you want to transfer the selected data?  Once confirmed, you will be redirected to Schülerkarriere
                   </Typography>
                   <div style={{display: 'flex', justifyContent: 'flex-start', marginTop: '15px'}}>
-                    <Button size='small' variant="contained" onClick={() => {signJSON();}}>Confirm</Button>
-                    <Button sx={{marginLeft: '10px'}} size='small' variant="outlined" onClick={() => {setOpen(false);}}>Cancel</Button>
+                    <Button sx={{backgroundColor: '#5a04bd', color: 'white', '&:hover':{backgroundColor: '#5a04bd'}}} size='small' variant="contained" onClick={() => {signJSON();}}>Confirm</Button>
+                    <Button sx={{marginLeft: '10px', backgroundColor: '#5a04bd', '&:hover':{backgroundColor: '#5a04bd'}}} size='small' variant="contained" onClick={() => {setOpen(false);}}>Cancel</Button>
                   </div>
                 </Box>
             </Modal>
