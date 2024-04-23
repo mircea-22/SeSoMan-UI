@@ -116,6 +116,10 @@
         position: relative;
         top: 120px;
     }
+
+    .MuiModal-root .MuiBox-root{
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 700px) {
