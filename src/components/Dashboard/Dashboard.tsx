@@ -249,7 +249,7 @@ export const Dashboard = (props: any) =>{
                             <ul style={{columns: '2', columnGap: '20px'}}>
                             {obj.Data_Selection.Stammdaten.map((entry: string) =>
                             <li key={entry}><Typography fontSize={13}>
-                            {capitalizeFirstLetter(getBasicData(entry))}
+                            {getBasicData(entry)}
                             </Typography></li>
                             )}
                             </ul>
@@ -260,7 +260,7 @@ export const Dashboard = (props: any) =>{
                               {obj.Data_Selection.Grades.map((entry: string) =>
                                 <li key={entry} style={{}}>
                                   <Typography fontSize={13}>
-                                    {capitalizeFirstLetter(getGrades(entry))}
+                                    {getGrades(entry)}
                                   </Typography>
                                 </li>
                                 )}
@@ -268,8 +268,8 @@ export const Dashboard = (props: any) =>{
                           </div>
                         </div>
                         <div style={{position: 'relative', bottom: '0', display: 'flex', justifyContent: 'space-between', marginTop: '50px'}}>
-                          <Button className='revoke-btn' sx={{marginRight: '5px', backgroundColor: '#5a04bd', '&:hover':{backgroundColor: '#5a04bd'}}} size='small' variant="contained">Revoke consent</Button>
                           <Button  className='privacy-btn'onClick={() =>{history.push('/privacy-notice')}} sx={{marginRight: '5px', backgroundColor: '#5a04bd', '&:hover':{backgroundColor: '#5a04bd'}}} size='small' variant="contained">Privacy Notice</Button>
+                          <Button className='revoke-btn' sx={{marginRight: '5px', backgroundColor: '#5a04bd', '&:hover':{backgroundColor: '#5a04bd'}}} size='small' variant="contained">Revoke consent</Button>
                         </div>
                       </Box>
                     </Modal>
