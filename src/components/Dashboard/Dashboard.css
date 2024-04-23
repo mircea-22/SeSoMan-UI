@@ -9,7 +9,7 @@
     width: min-content;
 }
 
-.App .timeline-wrapper .card-wrapper{
+.App  .card-wrapper{
     display: flex;
     justify-Content: space-evenly;
     align-items: center;
@@ -59,116 +59,384 @@
     background-color: #5a04bd;
 }
 
-.App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
-    width: 430px;
-    height: 150px;
-}
-
-@media screen and (max-width: 1400px){
-    width: 400px;
-    height: 150px;
+.App .timeline-wrapper .MuiPaper-root{
+        width: 600px;
+        height: 150px;
 }
 
 @media screen and (max-width: 1400px){
     .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
-        width: 340px;
+        width: 440px;
         height: 150px;
     }
 
     .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
         width: 130px;
     }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 130px;
+    }
 }
 
 @media screen and (max-width: 1300px){
-    .App .timeline-wrapper .MuiPaper-root{
-        width: 290px;
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 380px;
         height: 150px;
     }
 
-    .App .timeline-wrapper  .MuiTypography-h5{
-        font-size: 18px;
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 130px;
     }
 
-    .App .timeline-wrapper .MuiTypography-body1{
-        font-size: 14px;
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 130px;
     }
-
 }
 
-@media screen and (max-width: 1200px){
-    .App .timeline-wrapper .MuiPaper-root{
-        width: 200px;
-        height: 110px;
-    }
-
-
-    .App .timeline-wrapper  .MuiTypography-h5{
-        font-size: 18px;
-    }
-
-    .App .timeline-wrapper .MuiTypography-body1{
-        font-size: 14px;
-    }
-
-}
-
-@media screen and (max-width: 1000px){
-    .App .timeline-wrapper  .MuiTypography-h5{
-        font-size: 16px;
-    }
-
-    .App .timeline-wrapper .MuiTypography-body1{
-        font-size: 9px;
-    }
-
+@media screen and (max-width: 1160px){
     .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
-        width: 250px;
-        height: 80px;
+        width: 330px;
+        height: 150px;
     }
 
     .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
-        width: 100px;
+        width: 130px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 130px;
     }
 }
 
-@media screen and (max-width: 800px){
-    .App .timeline-wrapper .MuiPaper-root{
-        width: 200px;
-        height: 50px;
+@media screen and (max-width: 1050px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 310px;
+        height: 150px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 110px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 130px;
     }
 
     .App .timeline-wrapper  .title{
         position: relative;
         top: -15px;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .App .timeline-wrapper .subtitle{
         position: relative;
         top: -14px;
-        font-size: 9px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 990px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 270px;
+        height: 150px;
     }
 
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 110px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 130px;
+    }
+}
+
+@media screen and (max-width: 900px){
     .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
-        width: 220px;
-        height: 80px;
+        width: 230px;
+        height: 150px;
     }
 
     .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
         width: 100px;
     }
 
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 110px;
+    }
+
+    .App .timeline-wrapper  .title{
+        position: relative;
+        top: -15px;
+        font-size: 14px;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        position: relative;
+        top: -10px;
+        font-size: 12px;
+    }
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 800px){
+    .App .timeline-wrapper{
+        width: 95%;
+    }
+
     .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
-        width: 180px;
-        height: 80px;
+        width: 240px;
+        height: 100px;
     }
 
     .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
-        width: 60px;
+        width: 80px;
     }
 
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 110px;
+    }
+
+    .App .timeline-wrapper  .title{
+        position: relative;
+        top: -15px;
+        font-size: 13px;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        position: relative;
+        top: -10px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 730px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 200px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 80px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 110px;
+    }
+
+    .App .timeline-wrapper  .title{
+        position: relative;
+        top: -15px;
+        font-size: 13px;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        position: relative;
+        top: -10px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 730px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 200px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 80px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 85px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 40px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 13px;
+    }
+
+
+    .App .timeline-wrapper  .title{
+        position: relative;
+        top: -15px;
+        font-size: 13px;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        position: relative;
+        top: -10px;
+        font-size: 12px;
+    }
+}
+
+
+@media screen and (max-width: 630px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 180px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 65px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+
+
+    .App .timeline-wrapper  .title{
+        position: relative;
+        top: -15px;
+        font-size: 12px;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        position: relative;
+        top: -10px;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 160px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiCardMedia-root{
+        width: 100%;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+
+
+    .App .timeline-wrapper  .title{
+        display: none;
+    }
+
+    .App .timeline-wrapper .subtitle{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 150px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 500px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 120px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 430px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 115px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 430px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 95px;
+        height: 100px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 430px){
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root{
+        width: 75px;
+        height: 55px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .paper-container{
+        width: 70px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root .arrow-right{
+        width: 30px;
+    }
+
+    .App .timeline-wrapper .MuiTimeline-root .MuiPaper-root > .MuiTypography-root {
+        font-size: 11px;
+    }
+    
 }
